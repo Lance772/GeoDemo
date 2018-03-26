@@ -50,11 +50,17 @@ namespace GeoDemo.Controllers
         public string Get(int x1, int y1, int x2, int y2, int x3, int y3)
         {
             //Check paramters
-            if (x1 < 0 || y1 > 60 || x2 < 0 || y2 > 60 || x3 < 0 || y3 > 60) {
-                return "Invalid input parameter."; }
+            if (x1 < 0 || x1 > 60 || x2 < 0 || x2 > 60 || x3 < 0 || x3 > 60 || 
+                y1 < 0 || y1 > 60 || y2 < 0 || y2 > 60 || y3 < 0 || y3 > 60) {
+                return "Invalid input parameter.";
+            }
 
-            //Variables
-            int iRow, iColumn;
+            if (Math.Abs(x1-x2) > 10 || Math.Abs(x1 - x3) > 10 || Math.Abs(y1 - y2) > 10 || Math.Abs(y1 - y3) > 10){
+                return "Invalid triangle coordinates.";
+            }
+
+                //Variables
+                int iRow, iColumn;
             char cRow;
 
             //Get the row/column and return
